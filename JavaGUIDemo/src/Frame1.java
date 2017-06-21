@@ -15,12 +15,12 @@ import javax.swing.JComboBox;
 public class Frame1 {
 
 	private JFrame frame;
-	private JTextField id_textField;
-	private JTextField fnamelname_textField;
-	private JTextField addr_textField;
-	private JTextField province_textField;
-	private JTextField edu_textField;
-	private JTextField major_textField;
+	protected JTextField id_textField;
+	protected JTextField fnamelname_textField;
+	protected JTextField addr_textField;
+	protected JTextField province_textField;
+	protected JTextField edu_textField;
+	protected JTextField major_textField;
 
 	/**
 	 * Launch the application.
@@ -43,93 +43,150 @@ public class Frame1 {
 	 */
 	public Frame1() {
 		initialize();
+		input_id();
+		input_Name();
+		input_Address();
+		input_Province();
+		input_Sex();
+		input_Education();
+		input_Major();
+		input_Qualification();
+		input_Jobposition();
+		Submit_form();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		//Frame Layout
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 750, 1000);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblTestingApplication = new JLabel("STOU-TEC Company .ltd");
-		lblTestingApplication.setBounds(269, 6, 164, 29);
-		frame.getContentPane().add(lblTestingApplication);
+		//Topic Content Header
 		
-		JLabel lblName = new JLabel("Applicant ID (AP_ID) :");
-		lblName.setBounds(15, 120, 210, 25);
-		frame.getContentPane().add(lblName);
+		JLabel lblSTOU_TEC_1 = new JLabel("STOU-TEC Company .ltd");
+		lblSTOU_TEC_1.setBounds(269, 6, 164, 29);
+		frame.getContentPane().add(lblSTOU_TEC_1);
 		
-		JLabel lblFirstname = new JLabel("Firstname-Lastname (AP_NAME) :");
-		lblFirstname.setBounds(15, 150, 210, 25);
-		frame.getContentPane().add(lblFirstname);
+		JLabel lblMessage_2 = new JLabel("Application Form for Candidate");
+		lblMessage_2.setBounds(250, 40, 210, 15);
+		frame.getContentPane().add(lblMessage_2);
 		
-		id_textField = new JTextField();
-		id_textField.setBounds(260, 120, 450, 25);
-		frame.getContentPane().add(id_textField);
-		id_textField.setColumns(10);
+		JLabel lbl_Message3 = new JLabel("This application form for ICT, Give the applicant input your personal below ");
+		lbl_Message3.setBounds(122, 62, 492, 16);
+		frame.getContentPane().add(lbl_Message3);
 		
-		fnamelname_textField = new JTextField();
-		fnamelname_textField.setBounds(260, 150, 450, 25);
-		fnamelname_textField.setColumns(10);
-		frame.getContentPane().add(fnamelname_textField);
+		JLabel lbl_Message4 = new JLabel("STOU-TEC Company .ltd will approve following by appropriately");
+		lbl_Message4.setBounds(154, 84, 430, 16);
+		frame.getContentPane().add(lbl_Message4);
 		
-		addr_textField = new JTextField();
-		addr_textField.setBounds(260, 180, 450, 25);
-		addr_textField.setColumns(10);
-		frame.getContentPane().add(addr_textField);
+		JLabel lbl_id = new JLabel("Applicant ID (AP_ID) :");
+		lbl_id.setBounds(15, 120, 210, 25);
+		frame.getContentPane().add(lbl_id);
+	}
+	public String input_id(){
 		
-		JLabel lblNewLabel = new JLabel("Application Form for Candidate");
-		lblNewLabel.setBounds(250, 40, 210, 15);
-		frame.getContentPane().add(lblNewLabel);
+			JLabel lbl_id = new JLabel("Applicant ID (AP_ID) :");
+			lbl_id.setBounds(15, 120, 210, 25);
+			frame.getContentPane().add(lbl_id);
+			
+			id_textField = new JTextField();
+			id_textField.setBounds(260, 120, 450, 25);
+			frame.getContentPane().add(id_textField);
+			id_textField.setColumns(10);
+			
+			
+			return null;
+		}
+	
+	public String input_Name(){
+		//input data name
 		
-		JLabel lblThisApplicationForm = new JLabel("This application form for ICT, Give the applicant input your personal below ");
-		lblThisApplicationForm.setBounds(122, 62, 492, 16);
-		frame.getContentPane().add(lblThisApplicationForm);
+				JLabel lblFirstname = new JLabel("Firstname-Lastname (AP_NAME) :");
+				lblFirstname.setBounds(15, 150, 210, 25);
+				frame.getContentPane().add(lblFirstname);
+				
+				fnamelname_textField = new JTextField();
+				fnamelname_textField.setBounds(260, 150, 450, 25);
+				fnamelname_textField.setColumns(10);
+				frame.getContentPane().add(fnamelname_textField);
+				
+				return null;
 		
-		JLabel lblStoutecWillApprove = new JLabel("STOU-TEC Company .ltd will approve following by appropriately");
-		lblStoutecWillApprove.setBounds(154, 84, 430, 16);
-		frame.getContentPane().add(lblStoutecWillApprove);
+	}
+	
+	public String input_Address(){
+		// Address Selection
+
+			JLabel lblAddress = new JLabel("Address (AP_ADDR) :");
+			lblAddress.setBounds(15, 180, 210, 25);
+			frame.getContentPane().add(lblAddress);
+			
+			addr_textField = new JTextField();
+			addr_textField.setBounds(260, 180, 450, 25);
+			addr_textField.setColumns(10);
+			frame.getContentPane().add(addr_textField);
+			
+			return null;
+	}
+	
+	public String input_Province(){
+		// Province Selection
 		
-		JLabel lblAddress = new JLabel("Address (AP_ADDR) :");
-		lblAddress.setBounds(15, 180, 210, 25);
-		frame.getContentPane().add(lblAddress);
+				JLabel lblProvince = new JLabel("Province (AP_CHW) :");
+				lblProvince.setBounds(15, 210, 210, 25);
+				frame.getContentPane().add(lblProvince);
+				
+				province_textField = new JTextField();
+				province_textField.setBounds(260, 210, 225, 25);
+				province_textField.setColumns(10);
+				frame.getContentPane().add(province_textField);
+				return null;
+	}
+	
+	public String input_Sex(){
+				// Sex Selection 
 		
-		JLabel lblProvince = new JLabel("Province (AP_CHW) :");
-		lblProvince.setBounds(15, 210, 210, 25);
-		frame.getContentPane().add(lblProvince);
+				JLabel lblSex = new JLabel("Sex (AP_SEX) :");
+				lblSex.setBounds(15, 240, 210, 25);
+				frame.getContentPane().add(lblSex);
+				
+				JRadioButton rdbtnMale = new JRadioButton("Male");
+				rdbtnMale.setBounds(260, 240, 70, 25);
+				frame.getContentPane().add(rdbtnMale);
+				
+				JRadioButton rdbtnFemale = new JRadioButton("Female");
+				rdbtnFemale.setBounds(360, 240, 97, 25);
+				frame.getContentPane().add(rdbtnFemale);
+				return null;
+	}
+	
+	public String input_Education(){
+		// Education 
 		
-		province_textField = new JTextField();
-		province_textField.setBounds(260, 210, 225, 25);
-		province_textField.setColumns(10);
-		frame.getContentPane().add(province_textField);
+				JLabel lblEducation = new JLabel("Education (AP_EDU) :");
+				lblEducation.setBounds(15, 270, 210, 25);
+				frame.getContentPane().add(lblEducation);
+				
+				edu_textField = new JTextField();
+				edu_textField.setBounds(260, 270, 450, 25);
+				edu_textField.setColumns(10);
+				frame.getContentPane().add(edu_textField);
+				
+				JLabel lbleg = new JLabel("(e.g B.S., B.A., M.S., M.BA., M.A. )");
+				lbleg.setBounds(15, 300, 210, 16);
+				frame.getContentPane().add(lbleg);
 		
-		JLabel lblSex = new JLabel("Sex (AP_SEX) :");
-		lblSex.setBounds(15, 240, 210, 25);
-		frame.getContentPane().add(lblSex);
-		
-		JRadioButton rdbtnMale = new JRadioButton("Male");
-		rdbtnMale.setBounds(260, 240, 70, 25);
-		frame.getContentPane().add(rdbtnMale);
-		
-		JRadioButton rdbtnFemale = new JRadioButton("Female");
-		rdbtnFemale.setBounds(360, 240, 97, 25);
-		frame.getContentPane().add(rdbtnFemale);
-		
-		JLabel lblEducation = new JLabel("Education (AP_EDU) :");
-		lblEducation.setBounds(15, 270, 210, 25);
-		frame.getContentPane().add(lblEducation);
-		
-		edu_textField = new JTextField();
-		edu_textField.setBounds(260, 270, 450, 25);
-		edu_textField.setColumns(10);
-		frame.getContentPane().add(edu_textField);
-		
-		JLabel lbleg = new JLabel("(e.g B.S., B.A., M.S., M.BA., M.A. )");
-		lbleg.setBounds(15, 300, 210, 16);
-		frame.getContentPane().add(lbleg);
+			return null;
+	}
+	
+	public String input_Major(){
+		// Major
 		
 		JLabel lblMajor = new JLabel("Major (AP_MAJ) :");
 		lblMajor.setBounds(15, 330, 210, 25);
@@ -141,24 +198,29 @@ public class Frame1 {
 		frame.getContentPane().add(major_textField);
 		
 		
+		return null;
+	}
+	
+	public String input_Qualification(){
+		
 		/* Combo box section */
-		
-		String [] comboSpecialSkStrings = {
-				"Web_ASP",
-				"C++",
-				"Database Administrator, DB2",
-				"Database Administrator,ORACLE",
-				"Graphic Design",
-				"JAVA",
-				"Management",
-				"Network",
-				"Secretarial work,45 words/min",
-				"Secretarial work,60 words/min",
-				"System Analyst, Level 1",
-				"System Analyst, Level 2",
-				"Visual Basic"
-		};
-		
+				
+				String [] comboSpecialSkStrings = {
+						"Web_ASP",
+						"C++",
+						"Database Administrator, DB2",
+						"Database Administrator,ORACLE",
+						"Graphic Design",
+						"JAVA",
+						"Management",
+						"Network",
+						"Secretarial work,45 words/min",
+						"Secretarial work,60 words/min",
+						"System Analyst, Level 1",
+						"System Analyst, Level 2",
+						"Visual Basic"
+				};
+				
 		
 		JLabel lblqual = new JLabel("Other qualification or Special skills that should be consider (QUAL_DESC) **Required 5 items");
 		lblqual.setBounds(30, 370, 600, 15);
@@ -184,7 +246,7 @@ public class Frame1 {
 		frame.getContentPane().add(lblSpecialskills_2);
 		
 		JComboBox specialSk_comboBox_2 = new JComboBox(comboSpecialSkStrings);
-		specialSk_comboBox_1.setSelectedIndex(1);
+		specialSk_comboBox_2.setSelectedIndex(1);
 		specialSk_comboBox_2.setBounds(260, 440, 450, 27);
 		frame.getContentPane().add(specialSk_comboBox_2);
 		
@@ -195,7 +257,7 @@ public class Frame1 {
 		frame.getContentPane().add(lblSpecialskills_3);
 		
 		JComboBox specialSk_comboBox_3 = new JComboBox(comboSpecialSkStrings);
-		specialSk_comboBox_1.setSelectedIndex(2);
+		specialSk_comboBox_3.setSelectedIndex(2);
 		specialSk_comboBox_3.setBounds(260, 480, 450, 27);
 		frame.getContentPane().add(specialSk_comboBox_3);
 		
@@ -206,7 +268,7 @@ public class Frame1 {
 		frame.getContentPane().add(lblSpecialskills_4);
 		
 		JComboBox specialSk_comboBox_4 = new JComboBox(comboSpecialSkStrings);
-		specialSk_comboBox_1.setSelectedIndex(3);
+		specialSk_comboBox_4.setSelectedIndex(3);
 		specialSk_comboBox_4.setBounds(260, 520, 450, 27);
 		frame.getContentPane().add(specialSk_comboBox_4);
 		
@@ -217,10 +279,15 @@ public class Frame1 {
 		frame.getContentPane().add(lblSpecialskills_5);
 		
 		JComboBox specialSk_comboBox_5 = new JComboBox(comboSpecialSkStrings);
-		specialSk_comboBox_1.setSelectedIndex(4);
+		specialSk_comboBox_5.setSelectedIndex(4);
 		specialSk_comboBox_5.setBounds(260, 560, 450, 27);
 		frame.getContentPane().add(specialSk_comboBox_5);
 		
+		return null;
+	}
+	
+	public String input_Jobposition(){
+
 		/* Job Position */
 		
 		String [] comboJobPostionStrings = {
@@ -236,8 +303,6 @@ public class Frame1 {
 				"ICT Manager"
 		};
 		
-		
-	
 		JLabel lblPostionApplyingFor = new JLabel("Postion applying for (POS_NAME) ** Required 3 positions : ");
 		lblPostionApplyingFor.setBounds(30, 605, 600, 15);
 		frame.getContentPane().add(lblPostionApplyingFor);
@@ -248,7 +313,7 @@ public class Frame1 {
 		lblPosition_1.setBounds(15, 650, 210, 15);
 		frame.getContentPane().add(lblPosition_1);
 				
-		JComboBox position_comboBox_1 = new JComboBox();
+		JComboBox position_comboBox_1 = new JComboBox(comboJobPostionStrings);
 		position_comboBox_1.setSelectedIndex(0);
 		position_comboBox_1.setBounds(260, 645, 450, 27);
 		position_comboBox_1.setToolTipText("");
@@ -260,7 +325,7 @@ public class Frame1 {
 		lblPosition_2.setBounds(15, 690, 210, 15);
 		frame.getContentPane().add(lblPosition_2);
 		
-		JComboBox position_comboBox_2 = new JComboBox();
+		JComboBox position_comboBox_2 = new JComboBox(comboJobPostionStrings);
 		position_comboBox_2.setSelectedIndex(1);
 		position_comboBox_2.setBounds(260, 685, 450, 27);
 		frame.getContentPane().add(position_comboBox_2);
@@ -271,19 +336,43 @@ public class Frame1 {
 		lblPosition_3.setBounds(15, 730, 210, 15);
 		frame.getContentPane().add(lblPosition_3);
 		
-		JComboBox position_comboBox_3 = new JComboBox();
+		JComboBox position_comboBox_3 = new JComboBox(comboJobPostionStrings);
 		position_comboBox_3.setSelectedIndex(2);
 		position_comboBox_3.setBounds(260, 725, 450, 27);
 		frame.getContentPane().add(position_comboBox_3);
 		
-		// Submit form button
-		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(260, 792, 117, 29);
-		btnSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		frame.getContentPane().add(btnSubmit);
+		return null;
+		
 	}
+	
+		public String Submit_form(){
+			// Submit form button
+			JButton btnSubmit = new JButton("Submit");
+			btnSubmit.setBounds(260, 792, 117, 29);
+			btnSubmit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+						
+					String AP_ID = id_textField.getText();
+					String AP_NAME = fnamelname_textField.getText();
+					String AP_ADDR = addr_textField.getText();
+					String AP_PROVINCE = province_textField.getText();
+					
+						JOptionPane.showMessageDialog(frame,"You have successfully Input Application Form");
+						JOptionPane.showMessageDialog(frame,
+								"Applicant ID: " +AP_ID+
+								"\nFirstname and Lastname: " +AP_NAME+
+								"\nAddress: " + AP_ADDR+
+								"\nProvince: " +AP_PROVINCE
+								);
+						secondBox second = new secondBox();
+						second.frame.setVisible(true);
+					
+				}
+			});
+			frame.getContentPane().add(btnSubmit);
+	
+			return null;
+		}
+	
+		
 }

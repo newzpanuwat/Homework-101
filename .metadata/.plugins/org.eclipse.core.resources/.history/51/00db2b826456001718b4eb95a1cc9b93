@@ -1,0 +1,54 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+public class secondBox extends Frame1 {
+
+	JFrame frame;
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					secondBox window = new secondBox();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public secondBox() {
+		initialize();
+		showData();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 750, 1000);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+	}
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void showData(){
+		
+		
+		JLabel lblThisIsPage = new JLabel("This is page 2");
+		lblThisIsPage.setBounds(233, 23, 210, 16);
+		frame.getContentPane().add(lblThisIsPage);
+	}
+}
