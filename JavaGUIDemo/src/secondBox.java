@@ -48,11 +48,9 @@ public class secondBox extends Frame1 {
 	
 	public void showData(){
 		
-		String AP_ID = id_textField.getText();
-		String AP_NAME = fnamelname_textField.getText();
-		String AP_ADDR = addr_textField.getText();
-		String AP_PROVINCE = province_textField.getText();
 		
+		String AP_ID = id_textField.getText().toString();
+		System.out.println(AP_ID);
 		
 		
 		/* Label Section */
@@ -83,9 +81,8 @@ public class secondBox extends Frame1 {
 		lbl_id.setBounds(15, 120, 210, 25);
 		frame.getContentPane().add(lbl_id);
 		
-		JLabel Ap = new JLabel(AP_ID);
-		Ap.setBounds(260, 120, 450, 25);
-		frame.getContentPane().add(Ap);
+		
+		
 		
 		
 		

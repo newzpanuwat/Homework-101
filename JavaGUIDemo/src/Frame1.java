@@ -12,9 +12,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 
-public class Frame1 {
+public class Frame1 extends JFrame {
 
 	private JFrame frame;
+	protected String AP_ID;
 	protected JTextField id_textField;
 	protected JTextField fnamelname_textField;
 	protected JTextField addr_textField;
@@ -89,8 +90,8 @@ public class Frame1 {
 		lbl_id.setBounds(15, 120, 210, 25);
 		frame.getContentPane().add(lbl_id);
 	}
-	public String input_id(){
-		
+	public JTextField input_id(){
+			
 			JLabel lbl_id = new JLabel("Applicant ID (AP_ID) :");
 			lbl_id.setBounds(15, 120, 210, 25);
 			frame.getContentPane().add(lbl_id);
@@ -100,11 +101,10 @@ public class Frame1 {
 			frame.getContentPane().add(id_textField);
 			id_textField.setColumns(10);
 			
-			
-			return null;
+			return id_textField;
 		}
 	
-	public String input_Name(){
+	public JTextField input_Name(){
 		//input data name
 		
 				JLabel lblFirstname = new JLabel("Firstname-Lastname (AP_NAME) :");
@@ -116,11 +116,11 @@ public class Frame1 {
 				fnamelname_textField.setColumns(10);
 				frame.getContentPane().add(fnamelname_textField);
 				
-				return null;
+				return fnamelname_textField;
 		
 	}
 	
-	public String input_Address(){
+	public JTextField input_Address(){
 		// Address Selection
 
 			JLabel lblAddress = new JLabel("Address (AP_ADDR) :");
@@ -132,10 +132,10 @@ public class Frame1 {
 			addr_textField.setColumns(10);
 			frame.getContentPane().add(addr_textField);
 			
-			return null;
+			return addr_textField;
 	}
 	
-	public String input_Province(){
+	public JTextField input_Province(){
 		// Province Selection
 		
 				JLabel lblProvince = new JLabel("Province (AP_CHW) :");
@@ -146,27 +146,29 @@ public class Frame1 {
 				province_textField.setBounds(260, 210, 225, 25);
 				province_textField.setColumns(10);
 				frame.getContentPane().add(province_textField);
-				return null;
+				return province_textField;
 	}
 	
-	public String input_Sex(){
+	public JRadioButton input_Sex(){
 				// Sex Selection 
 		
 				JLabel lblSex = new JLabel("Sex (AP_SEX) :");
 				lblSex.setBounds(15, 240, 210, 25);
 				frame.getContentPane().add(lblSex);
 				
-				JRadioButton rdbtnMale = new JRadioButton("Male");
+				
+				final JRadioButton rdbtnMale = new JRadioButton("Male");
 				rdbtnMale.setBounds(260, 240, 70, 25);
 				frame.getContentPane().add(rdbtnMale);
 				
-				JRadioButton rdbtnFemale = new JRadioButton("Female");
+				final JRadioButton rdbtnFemale = new JRadioButton("Female");
 				rdbtnFemale.setBounds(360, 240, 97, 25);
 				frame.getContentPane().add(rdbtnFemale);
+				
 				return null;
 	}
 	
-	public String input_Education(){
+	public JTextField input_Education(){
 		// Education 
 		
 				JLabel lblEducation = new JLabel("Education (AP_EDU) :");
@@ -182,10 +184,10 @@ public class Frame1 {
 				lbleg.setBounds(15, 300, 210, 16);
 				frame.getContentPane().add(lbleg);
 		
-			return null;
+			return edu_textField;
 	}
 	
-	public String input_Major(){
+	public JTextField input_Major(){
 		// Major
 		
 		JLabel lblMajor = new JLabel("Major (AP_MAJ) :");
@@ -198,10 +200,10 @@ public class Frame1 {
 		frame.getContentPane().add(major_textField);
 		
 		
-		return null;
+		return major_textField;
 	}
 	
-	public String input_Qualification(){
+	public JComboBox input_Qualification(){
 		
 		/* Combo box section */
 				
@@ -227,6 +229,7 @@ public class Frame1 {
 		frame.getContentPane().add(lblqual);
 		
 		// comboBox Label and Special skills selection 1 
+		
 		
 		JLabel lblSpecialskills_1 = new JLabel("Special skill 1 :");
 		lblSpecialskills_1.setBounds(15, 405, 210, 15);
@@ -350,19 +353,40 @@ public class Frame1 {
 			JButton btnSubmit = new JButton("Submit");
 			btnSubmit.setBounds(260, 792, 117, 29);
 			btnSubmit.addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent e) {
-						
+					
 					String AP_ID = id_textField.getText();
+					System.out.println(AP_ID);
+					
 					String AP_NAME = fnamelname_textField.getText();
+					System.out.println(AP_NAME);
+					
 					String AP_ADDR = addr_textField.getText();
+					System.out.println(AP_ADDR);
+					
 					String AP_PROVINCE = province_textField.getText();
+					System.out.println(AP_PROVINCE);
+					
+					//String AP_SEX = sex_textField.getText();
+					//System.out.println(AP_SEX);
+					
+					String AP_EDUCATION = edu_textField.getText();
+					System.out.println(AP_EDUCATION);
+					
+					String AP_MAJ = major_textField.getText();
+					System.out.println(AP_MAJ);
+					
+					
 					
 						JOptionPane.showMessageDialog(frame,"You have successfully Input Application Form");
 						JOptionPane.showMessageDialog(frame,
 								"Applicant ID: " +AP_ID+
 								"\nFirstname and Lastname: " +AP_NAME+
 								"\nAddress: " + AP_ADDR+
-								"\nProvince: " +AP_PROVINCE
+								"\nProvince: " +AP_PROVINCE+
+								"\nEducation: " + AP_EDUCATION+
+								"\nMajor: " + AP_MAJ
 								);
 						secondBox second = new secondBox();
 						second.frame.setVisible(true);
