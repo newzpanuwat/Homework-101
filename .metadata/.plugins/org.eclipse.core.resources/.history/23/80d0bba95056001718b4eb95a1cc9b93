@@ -1,0 +1,103 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Frame1 {
+
+	private JFrame frame;
+	private JTextField id;
+	private JTextField firstname;
+	private JTextField lastname;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Frame1 window = new Frame1();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Frame1() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 750, 616);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblTestingApplication = new JLabel("Testing Application For STOU");
+		lblTestingApplication.setBounds(270, 25, 205, 29);
+		frame.getContentPane().add(lblTestingApplication);
+		
+		JLabel lblName = new JLabel("Applicant ID");
+		lblName.setBounds(55, 90, 93, 16);
+		frame.getContentPane().add(lblName);
+		
+		JLabel lblFirstname = new JLabel("Firstname");
+		lblFirstname.setBounds(55, 127, 93, 16);
+		frame.getContentPane().add(lblFirstname);
+		
+		JLabel lblLastname = new JLabel("Lastname");
+		lblLastname.setBounds(55, 165, 93, 16);
+		frame.getContentPane().add(lblLastname);
+		
+		id = new JTextField();
+		id.setBounds(196, 85, 222, 26);
+		frame.getContentPane().add(id);
+		id.setColumns(10);
+		
+		firstname = new JTextField();
+		firstname.setBounds(196, 122, 222, 26);
+		firstname.setColumns(10);
+		frame.getContentPane().add(firstname);
+		
+		lastname = new JTextField();
+		lastname.setBounds(196, 160, 222, 26);
+		lastname.setColumns(10);
+		frame.getContentPane().add(lastname);
+		
+		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String id_app = id.getText();
+				String fname = firstname.getText();
+				String lname = lastname.getText();
+				
+				
+				if(id_app.equals("001") && fname.equals("Panuwat") && lname.equals("Boonrod")){
+					JOptionPane.showMessageDialog(frame, "You have successful submit data!!");
+				}else{
+					JOptionPane.showMessageDialog(frame, "Wrong data!!");
+				}
+				
+			}
+		});
+		btnSubmit.setBounds(196, 222, 117, 29);
+		frame.getContentPane().add(btnSubmit);
+	}
+}
