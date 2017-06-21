@@ -261,7 +261,7 @@ public class Frame1 {
 		frame.getContentPane().add(lblPosition_2);
 		
 		JComboBox position_comboBox_2 = new JComboBox();
-		position_comboBox_2.setSelectedIndex(1);
+		position_comboBox_1.setSelectedIndex(1);
 		position_comboBox_2.setBounds(260, 685, 450, 27);
 		frame.getContentPane().add(position_comboBox_2);
 
@@ -272,7 +272,7 @@ public class Frame1 {
 		frame.getContentPane().add(lblPosition_3);
 		
 		JComboBox position_comboBox_3 = new JComboBox();
-		position_comboBox_3.setSelectedIndex(2);
+		position_comboBox_1.setSelectedIndex(2);
 		position_comboBox_3.setBounds(260, 725, 450, 27);
 		frame.getContentPane().add(position_comboBox_3);
 		
