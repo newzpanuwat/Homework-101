@@ -1,0 +1,168 @@
+import java.awt.EventQueue;
+import java.awt.Window;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+
+public class secondBox extends Frame1 {
+
+	JFrame frame;
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					secondBox window = new secondBox();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public secondBox() {
+		initialize();
+		showData();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 750, 1000);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+	}
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public String getID(String id){
+		this.id_textField = this.AP_ID;
+		return id;
+	}
+	
+	public void showData(){
+		
+		
+		/* Label Section */
+		
+		JLabel lblSTOU_TEC_1 = new JLabel("STOU-TEC Company .ltd");
+		lblSTOU_TEC_1.setBounds(269, 6, 164, 29);
+		frame.getContentPane().add(lblSTOU_TEC_1);
+		
+		JLabel lblMessage_2 = new JLabel("Application Form for Candidate");
+		lblMessage_2.setBounds(250, 40, 210, 15);
+		frame.getContentPane().add(lblMessage_2);
+		
+		JLabel lbl_Message3 = new JLabel("This application form for ICT, Give the applicant input your personal below ");
+		lbl_Message3.setBounds(122, 62, 492, 16);
+		frame.getContentPane().add(lbl_Message3);
+		
+		JLabel lbl_Message4 = new JLabel("STOU-TEC Company .ltd will approve following by appropriately");
+		lbl_Message4.setBounds(154, 84, 430, 16);
+		frame.getContentPane().add(lbl_Message4);
+		
+		
+		
+		/* Content Section */
+		
+		// Personal information
+		
+		JLabel lbl_id = new JLabel("Applicant ID (AP_ID) :");
+		lbl_id.setBounds(15, 120, 210, 25);
+		frame.getContentPane().add(lbl_id);
+		
+		
+		
+		
+		JLabel lblFirstname = new JLabel("Firstname-Lastname (AP_NAME) :");
+		lblFirstname.setBounds(15, 150, 210, 25);
+		frame.getContentPane().add(lblFirstname);
+		
+		JLabel lblAddress = new JLabel("Address (AP_ADDR) :");
+		lblAddress.setBounds(15, 180, 210, 25);
+		frame.getContentPane().add(lblAddress);
+		
+		JLabel lblProvince = new JLabel("Province (AP_CHW) :");
+		lblProvince.setBounds(15, 210, 210, 25);
+		frame.getContentPane().add(lblProvince);
+		
+		JLabel lblSex = new JLabel("Sex (AP_SEX) :");
+		lblSex.setBounds(15, 240, 210, 25);
+		frame.getContentPane().add(lblSex);
+		
+		JLabel lblEducation = new JLabel("Education (AP_EDU) :");
+		lblEducation.setBounds(15, 270, 210, 25);
+		frame.getContentPane().add(lblEducation);
+		
+		JLabel lblMajor = new JLabel("Major (AP_MAJ) :");
+		lblMajor.setBounds(15, 330, 210, 25);
+		frame.getContentPane().add(lblMajor);
+		
+		
+		// Special skills
+		
+		JLabel lblqual = new JLabel("Other qualification or Special skills that should be consider (QUAL_DESC) **Required 5 items");
+		lblqual.setBounds(30, 370, 600, 15);
+		frame.getContentPane().add(lblqual);
+		
+		JLabel lblPostionApplyingFor = new JLabel("Postion applying for (POS_NAME) ** Required 3 positions : ");
+		lblPostionApplyingFor.setBounds(30, 605, 600, 15);
+		frame.getContentPane().add(lblPostionApplyingFor);
+		
+		JLabel lblSpecialskills_1 = new JLabel("Special skill 1 :");
+		lblSpecialskills_1.setBounds(15, 405, 210, 15);
+		frame.getContentPane().add(lblSpecialskills_1);
+		
+		JLabel lblSpecialskills_2 = new JLabel("Special skill 2 :");
+		lblSpecialskills_2.setBounds(15, 445, 210, 15);
+		frame.getContentPane().add(lblSpecialskills_2);
+		
+		JLabel lblSpecialskills_3 = new JLabel("Special skill 3 :");
+		lblSpecialskills_3.setBounds(15, 485, 210, 15);
+		frame.getContentPane().add(lblSpecialskills_3);
+		
+		
+		JLabel lblSpecialskills_4 = new JLabel("Special skill 4 :");
+		lblSpecialskills_4.setBounds(15, 525, 210, 15);
+		frame.getContentPane().add(lblSpecialskills_4);
+		
+		JLabel lblSpecialskills_5 = new JLabel("Special skill 5 :");
+		lblSpecialskills_5.setBounds(15, 565, 210, 15);
+		frame.getContentPane().add(lblSpecialskills_5);
+		
+		
+		//Job Position Selection
+		
+		JLabel lblPostionApplyingForp2 = new JLabel("Postion applying for (POS_NAME) ** Required 3 positions : ");
+		lblPostionApplyingForp2.setBounds(30, 605, 600, 15);
+		frame.getContentPane().add(lblPostionApplyingForp2);
+		
+		
+		JLabel lblPosition_1 = new JLabel("Position 1 :");
+		lblPosition_1.setBounds(15, 650, 210, 15);
+		frame.getContentPane().add(lblPosition_1);
+		
+		JLabel lblPosition_2 = new JLabel("Position 2 :");
+		lblPosition_2.setBounds(15, 690, 210, 15);
+		frame.getContentPane().add(lblPosition_2);
+		
+		JLabel lblPosition_3 = new JLabel("Position 3 :");
+		lblPosition_3.setBounds(15, 730, 210, 15);
+		frame.getContentPane().add(lblPosition_3);
+		
+		
+		
+	}
+}

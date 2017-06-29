@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,8 +8,12 @@ import javax.swing.JTextField;
 
 
 public class secondBox extends Frame1 {
+	
+	protected String ap_id;
 
 	JFrame frame;
+	
+	public static JLabel lblresult_id;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -29,6 +34,9 @@ public class secondBox extends Frame1 {
 	public secondBox() {
 		initialize();
 		showData();
+		getID1(AP_ID);
+		
+		
 	}
 
 	/**
@@ -46,11 +54,21 @@ public class secondBox extends Frame1 {
 		
 	}
 	
+	
+	
+	public void getID1(String ap_id){
+		this.ap_id = this.AP_ID;
+		JLabel lblresult_id = new JLabel(ap_id);
+		lblresult_id.setBounds(364, 124, 96, 16);
+		frame.getContentPane().add(lblresult_id);
+		
+	
+	}
+	
+	
+	
+	
 	public void showData(){
-		
-		
-		String AP_ID = id_textField.getText().toString();
-		System.out.println(AP_ID);
 		
 		
 		/* Label Section */
@@ -83,13 +101,19 @@ public class secondBox extends Frame1 {
 		
 		
 		
-		
-		
-		
+		//
 		
 		JLabel lblFirstname = new JLabel("Firstname-Lastname (AP_NAME) :");
 		lblFirstname.setBounds(15, 150, 210, 25);
 		frame.getContentPane().add(lblFirstname);
+		
+		
+		JLabel lblresult_name = new JLabel("result_Name");
+		lblresult_name.setBounds(364, 154, 107, 16);
+		frame.getContentPane().add(lblresult_name);
+		
+		
+		//
 		
 		JLabel lblAddress = new JLabel("Address (AP_ADDR) :");
 		lblAddress.setBounds(15, 180, 210, 25);
@@ -164,6 +188,12 @@ public class secondBox extends Frame1 {
 		frame.getContentPane().add(lblPosition_3);
 		
 		
+		
+		
+	}
+
+	private void getID(JTextField id_textField) {
+		// TODO Auto-generated method stub
 		
 	}
 }

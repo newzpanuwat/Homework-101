@@ -90,7 +90,7 @@ public class Frame1 extends JFrame {
 		lbl_id.setBounds(15, 120, 210, 25);
 		frame.getContentPane().add(lbl_id);
 	}
-	public JTextField input_id(){
+	final JTextField input_id(){
 			
 			JLabel lbl_id = new JLabel("Applicant ID (AP_ID) :");
 			lbl_id.setBounds(15, 120, 210, 25);
@@ -347,6 +347,17 @@ public class Frame1 extends JFrame {
 		return null;
 		
 	}
+	public String getID(){
+		return AP_ID;
+	
+	}
+	
+	
+	public String setID(JTextField id_textField){
+		this.AP_ID = this.id_textField.getText().toString();
+		return AP_ID;
+		
+	}
 	
 		public String Submit_form(){
 			// Submit form button
@@ -355,12 +366,16 @@ public class Frame1 extends JFrame {
 			btnSubmit.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					secondBox second = new secondBox();
 					
-					String AP_ID = id_textField.getText();
+					
+					setID(id_textField);
 					System.out.println(AP_ID);
 					
+					
 					String AP_NAME = fnamelname_textField.getText();
-					System.out.println(AP_NAME);
+					new secondBox().setVisible(true);
+					//System.out.println(AP_NAME);
 					
 					String AP_ADDR = addr_textField.getText();
 					System.out.println(AP_ADDR);
@@ -388,7 +403,7 @@ public class Frame1 extends JFrame {
 								"\nEducation: " + AP_EDUCATION+
 								"\nMajor: " + AP_MAJ
 								);
-						secondBox second = new secondBox();
+						
 						second.frame.setVisible(true);
 					
 				}
