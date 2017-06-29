@@ -16,8 +16,6 @@ public class secondBox extends Frame1 {
 	public static JLabel lblresult_id;
 	
 	public static void main(String[] args) {
-		
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -100,7 +98,6 @@ public class secondBox extends Frame1 {
 		JLabel lbl_id = new JLabel("Applicant ID (AP_ID) :");
 		lbl_id.setBounds(15, 120, 210, 25);
 		frame.getContentPane().add(lbl_id);
-		
 		
 		
 		

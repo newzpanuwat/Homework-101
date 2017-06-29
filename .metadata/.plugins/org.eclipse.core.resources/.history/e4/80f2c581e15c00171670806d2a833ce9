@@ -15,7 +15,7 @@ import javax.swing.JComboBox;
 public class Frame1 extends JFrame {
 
 	private JFrame frame;
-	protected String AP_ID,AP_NAME,AP_ADDRESS,AP_PROVINCE,AP_SEX,AP_EDUCATION;
+	protected String AP_ID;
 	protected JTextField id_textField;
 	protected JTextField fnamelname_textField;
 	protected JTextField addr_textField;
@@ -60,6 +60,8 @@ public class Frame1 extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		Frame1 fr1 = new Frame1();
 		
 		//Frame Layout
 		
@@ -352,52 +354,12 @@ public class Frame1 extends JFrame {
 	
 	}
 	
+	
 	public String setID(JTextField id_textField){
 		this.AP_ID = this.id_textField.getText().toString();
-		System.out.println(AP_ID);
 		return AP_ID;
 		
 	}
-	
-	public String getName(){
-		return AP_NAME;
-	}
-	
-	public String setName(JTextField fnamelname){
-		this.AP_NAME = this.fnamelname_textField.getText().toString();
-		System.out.println(AP_NAME);
-		return AP_NAME;
-	}
-	
-	public String getAdress(){
-		return AP_ADDRESS;
-	}
-	
-	public String setAddress(JTextField addr_textField){
-		this.AP_ADDRESS = this.addr_textField.getText().toString();
-		System.out.println(AP_ADDRESS);
-		return AP_ADDRESS;
-	}
-	
-	public String getProvince(){
-		return AP_PROVINCE;
-	}
-	
-	public String setProvince(JTextField province_textField){
-		this.AP_PROVINCE = this.province_textField.getText().toString();
-		System.out.println(AP_PROVINCE);
-		return AP_PROVINCE;
-	}
-	
-	public String getSex(){
-		return AP_SEX;
-	}
-	
-	public String setSex(JTextField sex_textField){
-		
-	}
-	
-	
 	
 		public String Submit_form(){
 			// Submit form button
@@ -406,14 +368,23 @@ public class Frame1 extends JFrame {
 			btnSubmit.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					Frame1 frame1 = new Frame1();
 					secondBox second = new secondBox();
+					
+					
+					frame1.setID(id_textField);
+					System.out.println(AP_ID);
+					
+					
+					String AP_NAME = fnamelname_textField.getText();
 					new secondBox().setVisible(true);
+					//System.out.println(AP_NAME);
 					
-					setID(id_textField);
-					setName(fnamelname_textField);
-					setAddress(addr_textField);
-					setProvince(province_textField);
+					String AP_ADDR = addr_textField.getText();
+					System.out.println(AP_ADDR);
 					
+					String AP_PROVINCE = province_textField.getText();
+					System.out.println(AP_PROVINCE);
 					
 					//String AP_SEX = sex_textField.getText();
 					//System.out.println(AP_SEX);
@@ -430,9 +401,8 @@ public class Frame1 extends JFrame {
 						JOptionPane.showMessageDialog(frame,
 								"Applicant ID: " +AP_ID+
 								"\nFirstname and Lastname: " +AP_NAME+
-								"\nAddress: " + AP_ADDRESS+
+								"\nAddress: " + AP_ADDR+
 								"\nProvince: " +AP_PROVINCE+
-								"\nSex: " +AP_SEX+
 								"\nEducation: " + AP_EDUCATION+
 								"\nMajor: " + AP_MAJ
 								);
