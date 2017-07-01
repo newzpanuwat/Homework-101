@@ -18,8 +18,9 @@ public class Frame1 extends JFrame {
 	private JFrame frame;
 	protected String AP_ID,AP_NAME,AP_ADDRESS,AP_PROVINCE,AP_SEX,AP_EDUCATION;
 	protected String AP_POS1,AP_POS2,AP_POS3,AP_POS4,AP_POS5;
+	protected String QUAL_POS1,QUAL_POS2,QUAL_POS3,QUAL_POS4,QUAL_POS5;
 	protected JRadioButton resultSex;
-	protected JComboBox position_comboBox1,position_comboBox2,position_comboBox3;
+	protected JComboBox position_comboBox_1,position_comboBox_2,position_comboBox_3;
 	protected JTextField id_textField;
 	protected JTextField fnamelname_textField;
 	protected JTextField addr_textField;
@@ -30,6 +31,7 @@ public class Frame1 extends JFrame {
 	/* Job Position */
 	
 	String [] comboJobPostionStrings = {
+			"Select the Job Position",
 			"Technical Programmer",
 			"Web Developer",
 			"General Manager",
@@ -45,6 +47,7 @@ public class Frame1 extends JFrame {
 	/* Combo box section */
 	
 	String [] comboSpecialSkStrings = {
+			"Select the Skills",
 			"Web_ASP",
 			"C++",
 			"Database Administrator, DB2",
@@ -89,7 +92,9 @@ public class Frame1 extends JFrame {
 		input_Education();
 		input_Major();
 		input_Qualification();
-		input_Jobposition();
+		input_Jobposition1();
+		input_Jobposition2();
+		input_Jobposition3();
 		Submit_form();
 	}
 
@@ -280,7 +285,7 @@ public class Frame1 extends JFrame {
 		frame.getContentPane().add(lblSpecialskills_2);
 		
 		JComboBox specialSk_comboBox_2 = new JComboBox(comboSpecialSkStrings);
-		specialSk_comboBox_2.setSelectedIndex(1);
+		specialSk_comboBox_2.setSelectedIndex(0);
 		specialSk_comboBox_2.setBounds(260, 440, 450, 27);
 		frame.getContentPane().add(specialSk_comboBox_2);
 		
@@ -291,7 +296,7 @@ public class Frame1 extends JFrame {
 		frame.getContentPane().add(lblSpecialskills_3);
 		
 		JComboBox specialSk_comboBox_3 = new JComboBox(comboSpecialSkStrings);
-		specialSk_comboBox_3.setSelectedIndex(2);
+		specialSk_comboBox_3.setSelectedIndex(0);
 		specialSk_comboBox_3.setBounds(260, 480, 450, 27);
 		frame.getContentPane().add(specialSk_comboBox_3);
 		
@@ -302,7 +307,7 @@ public class Frame1 extends JFrame {
 		frame.getContentPane().add(lblSpecialskills_4);
 		
 		JComboBox specialSk_comboBox_4 = new JComboBox(comboSpecialSkStrings);
-		specialSk_comboBox_4.setSelectedIndex(3);
+		specialSk_comboBox_4.setSelectedIndex(0);
 		specialSk_comboBox_4.setBounds(260, 520, 450, 27);
 		frame.getContentPane().add(specialSk_comboBox_4);
 		
@@ -313,14 +318,14 @@ public class Frame1 extends JFrame {
 		frame.getContentPane().add(lblSpecialskills_5);
 		
 		JComboBox specialSk_comboBox_5 = new JComboBox(comboSpecialSkStrings);
-		specialSk_comboBox_5.setSelectedIndex(4);
+		specialSk_comboBox_5.setSelectedIndex(0);
 		specialSk_comboBox_5.setBounds(260, 560, 450, 27);
 		frame.getContentPane().add(specialSk_comboBox_5);
 		
 		return null;
 	}
 	
-	public JComboBox input_Jobposition(){
+	public JComboBox input_Jobposition1(){
 
 		
 		JLabel lblPostionApplyingFor = new JLabel("Postion applying for (POS_NAME) ** Required 3 positions : ");
@@ -338,9 +343,12 @@ public class Frame1 extends JFrame {
 		position_comboBox_1.setBounds(260, 645, 450, 27);
 		position_comboBox_1.setToolTipText("");
 		frame.getContentPane().add(position_comboBox_1);
-
 		
-
+		
+		return position_comboBox_1;
+	}
+	
+	public JComboBox input_Jobposition2(){
 		// Job Position Label and Job Position selection 2
 		
 		JLabel lblPosition_2 = new JLabel("Position 2 :");
@@ -348,11 +356,14 @@ public class Frame1 extends JFrame {
 		frame.getContentPane().add(lblPosition_2);
 		
 		JComboBox position_comboBox_2 = new JComboBox(comboJobPostionStrings);
-		position_comboBox_2.setSelectedIndex(1);
+		position_comboBox_2.setSelectedIndex(0);
 		position_comboBox_2.setBounds(260, 685, 450, 27);
 		frame.getContentPane().add(position_comboBox_2);
 		
-		
+		return position_comboBox_2;
+	}
+
+	public JComboBox input_Jobposition3(){
 		// Job Position Label and Job Position selection 3
 		
 		JLabel lblPosition_3 = new JLabel("Position 3 :");
@@ -360,13 +371,14 @@ public class Frame1 extends JFrame {
 		frame.getContentPane().add(lblPosition_3);
 		
 		JComboBox position_comboBox_3 = new JComboBox(comboJobPostionStrings);
-		position_comboBox_3.setSelectedIndex(2);
+		position_comboBox_3.setSelectedIndex(0);
 		position_comboBox_3.setBounds(260, 725, 450, 27);
 		frame.getContentPane().add(position_comboBox_3);
 		
-		return position_comboBox_1;
-		
+		return position_comboBox_3;
 	}
+		
+		
 	public String getID(){
 		return AP_ID;
 	
@@ -409,12 +421,12 @@ public class Frame1 extends JFrame {
 		return AP_PROVINCE;
 	}
 	
-	public String setSex(JRadioButton resultSex){
-		this.AP_SEX = this.resultSex.getText().toString();
+	public String getSex(){
 		return AP_SEX;
 	}
 	
-	public String getSex(){
+	public String setSex(JRadioButton resultSex){
+		this.AP_SEX = this.resultSex.getText().toString();
 		return AP_SEX;
 	}
 	
@@ -422,8 +434,8 @@ public class Frame1 extends JFrame {
 		return AP_POS1;
 	}
 	
-	public String setPostion1(JComboBox position_comboBox_1){
-		
+	public String setPosition1(JComboBox position_comboBox_1){
+		this.AP_POS1 = this.position_comboBox_1.getSelectedItem().toString();
 		return AP_POS1;
 	}
 	
@@ -454,16 +466,9 @@ public class Frame1 extends JFrame {
 					setSex(resultSex);
 					
 					
-					
-					
-					//String AP_SEX = sex_textField.getText();
-					//System.out.println(AP_SEX);
-					
 					String AP_EDUCATION = edu_textField.getText();
-					//System.out.println(AP_EDUCATION);
 					
 					String AP_MAJ = major_textField.getText();
-					//System.out.println(AP_MAJ);
 					
 					
 					
@@ -476,7 +481,14 @@ public class Frame1 extends JFrame {
 								"\nSex: " +AP_SEX+
 								"\nEducation: " + AP_EDUCATION+
 								"\nMajor: " + AP_MAJ+
-								"\nPosition: " +AP_POS1
+								"\nQualification1 : " +QUAL_POS1+
+								"\nQualification2 : " +QUAL_POS2+
+								"\nQualification3 : " +QUAL_POS3+
+								"\nQualification4 : " +QUAL_POS4+
+								"\nQualification5 : " +QUAL_POS5+
+								"\nPosition1 : " +AP_POS1+
+								"\nPosition2 : " +AP_POS2+
+								"\nPosition3 : " +AP_POS3
 								);
 						
 						second.frame.setVisible(true);
