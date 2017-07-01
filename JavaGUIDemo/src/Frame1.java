@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
@@ -16,12 +17,48 @@ public class Frame1 extends JFrame {
 
 	private JFrame frame;
 	protected String AP_ID,AP_NAME,AP_ADDRESS,AP_PROVINCE,AP_SEX,AP_EDUCATION;
+	protected String AP_POS1,AP_POS2,AP_POS3,AP_POS4,AP_POS5;
+	protected JRadioButton resultSex;
+	protected JComboBox position_comboBox1,position_comboBox2,position_comboBox3;
 	protected JTextField id_textField;
 	protected JTextField fnamelname_textField;
 	protected JTextField addr_textField;
 	protected JTextField province_textField;
 	protected JTextField edu_textField;
 	protected JTextField major_textField;
+	
+	/* Job Position */
+	
+	String [] comboJobPostionStrings = {
+			"Technical Programmer",
+			"Web Developer",
+			"General Manager",
+			"ICT Specialist",
+			"E-Business Analyst",
+			"ICT Documentor",
+			"Database Administrator",
+			"PC Administrator",
+			"Network Specialist",
+			"ICT Manager"
+	};
+	
+	/* Combo box section */
+	
+	String [] comboSpecialSkStrings = {
+			"Web_ASP",
+			"C++",
+			"Database Administrator, DB2",
+			"Database Administrator,ORACLE",
+			"Graphic Design",
+			"JAVA",
+			"Management",
+			"Network",
+			"Secretarial work,45 words/min",
+			"Secretarial work,60 words/min",
+			"System Analyst, Level 1",
+			"System Analyst, Level 2",
+			"Visual Basic"
+	};
 
 	/**
 	 * Launch the application.
@@ -151,6 +188,7 @@ public class Frame1 extends JFrame {
 	
 	public JRadioButton input_Sex(){
 				// Sex Selection 
+				
 		
 				JLabel lblSex = new JLabel("Sex (AP_SEX) :");
 				lblSex.setBounds(15, 240, 210, 25);
@@ -165,7 +203,18 @@ public class Frame1 extends JFrame {
 				rdbtnFemale.setBounds(360, 240, 97, 25);
 				frame.getContentPane().add(rdbtnFemale);
 				
-				return null;
+				
+				if (rdbtnMale.isSelected()){
+					
+					resultSex = rdbtnMale;
+					
+					return resultSex;
+				}
+				else{
+					resultSex = rdbtnFemale;
+					return resultSex;
+				}
+
 	}
 	
 	public JTextField input_Education(){
@@ -204,24 +253,6 @@ public class Frame1 extends JFrame {
 	}
 	
 	public JComboBox input_Qualification(){
-		
-		/* Combo box section */
-				
-				String [] comboSpecialSkStrings = {
-						"Web_ASP",
-						"C++",
-						"Database Administrator, DB2",
-						"Database Administrator,ORACLE",
-						"Graphic Design",
-						"JAVA",
-						"Management",
-						"Network",
-						"Secretarial work,45 words/min",
-						"Secretarial work,60 words/min",
-						"System Analyst, Level 1",
-						"System Analyst, Level 2",
-						"Visual Basic"
-				};
 				
 		
 		JLabel lblqual = new JLabel("Other qualification or Special skills that should be consider (QUAL_DESC) **Required 5 items");
@@ -289,22 +320,8 @@ public class Frame1 extends JFrame {
 		return null;
 	}
 	
-	public String input_Jobposition(){
+	public JComboBox input_Jobposition(){
 
-		/* Job Position */
-		
-		String [] comboJobPostionStrings = {
-				"Technical Programmer",
-				"Web Developer",
-				"General Manager",
-				"ICT Specialist",
-				"E-Business Analyst",
-				"ICT Documentor",
-				"Database Administrator",
-				"PC Administrator",
-				"Network Specialist",
-				"ICT Manager"
-		};
 		
 		JLabel lblPostionApplyingFor = new JLabel("Postion applying for (POS_NAME) ** Required 3 positions : ");
 		lblPostionApplyingFor.setBounds(30, 605, 600, 15);
@@ -322,6 +339,8 @@ public class Frame1 extends JFrame {
 		position_comboBox_1.setToolTipText("");
 		frame.getContentPane().add(position_comboBox_1);
 
+		
+
 		// Job Position Label and Job Position selection 2
 		
 		JLabel lblPosition_2 = new JLabel("Position 2 :");
@@ -332,7 +351,8 @@ public class Frame1 extends JFrame {
 		position_comboBox_2.setSelectedIndex(1);
 		position_comboBox_2.setBounds(260, 685, 450, 27);
 		frame.getContentPane().add(position_comboBox_2);
-
+		
+		
 		// Job Position Label and Job Position selection 3
 		
 		JLabel lblPosition_3 = new JLabel("Position 3 :");
@@ -344,7 +364,7 @@ public class Frame1 extends JFrame {
 		position_comboBox_3.setBounds(260, 725, 450, 27);
 		frame.getContentPane().add(position_comboBox_3);
 		
-		return null;
+		return position_comboBox_1;
 		
 	}
 	public String getID(){
@@ -389,14 +409,27 @@ public class Frame1 extends JFrame {
 		return AP_PROVINCE;
 	}
 	
+	public String setSex(JRadioButton resultSex){
+		this.AP_SEX = this.resultSex.getText().toString();
+		return AP_SEX;
+	}
+	
 	public String getSex(){
 		return AP_SEX;
 	}
 	
-	public String setSex(JTextField sex_textField){
-		
+	public String getPosition1(){
+		return AP_POS1;
 	}
 	
+	public String setPostion1(JComboBox position_comboBox_1){
+		
+		return AP_POS1;
+	}
+	
+	public String getPosition2(){
+		return AP_POS2;
+	}
 	
 	
 		public String Submit_form(){
@@ -406,23 +439,31 @@ public class Frame1 extends JFrame {
 			btnSubmit.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					
+					//new Form
 					secondBox second = new secondBox();
 					new secondBox().setVisible(true);
+					
+					//Hide Current Form
+					frame.setVisible(false);
 					
 					setID(id_textField);
 					setName(fnamelname_textField);
 					setAddress(addr_textField);
 					setProvince(province_textField);
+					setSex(resultSex);
+					
+					
 					
 					
 					//String AP_SEX = sex_textField.getText();
 					//System.out.println(AP_SEX);
 					
 					String AP_EDUCATION = edu_textField.getText();
-					System.out.println(AP_EDUCATION);
+					//System.out.println(AP_EDUCATION);
 					
 					String AP_MAJ = major_textField.getText();
-					System.out.println(AP_MAJ);
+					//System.out.println(AP_MAJ);
 					
 					
 					
@@ -434,7 +475,8 @@ public class Frame1 extends JFrame {
 								"\nProvince: " +AP_PROVINCE+
 								"\nSex: " +AP_SEX+
 								"\nEducation: " + AP_EDUCATION+
-								"\nMajor: " + AP_MAJ
+								"\nMajor: " + AP_MAJ+
+								"\nPosition: " +AP_POS1
 								);
 						
 						second.frame.setVisible(true);

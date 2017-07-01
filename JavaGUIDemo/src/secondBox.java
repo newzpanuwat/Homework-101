@@ -102,8 +102,6 @@ public class secondBox extends Frame1 {
 		frame.getContentPane().add(lbl_id);
 		
 		
-		
-		
 		//
 		
 		JLabel lblFirstname = new JLabel("Firstname-Lastname (AP_NAME) :");
