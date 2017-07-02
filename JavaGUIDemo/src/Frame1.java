@@ -444,6 +444,7 @@ public class Frame1 extends JFrame {
 	}
 	
 	
+	
 		public String Submit_form(){
 			// Submit form button
 			JButton btnSubmit = new JButton("Submit");
@@ -457,17 +458,16 @@ public class Frame1 extends JFrame {
 					new secondBox().setVisible(true);
 					
 					//Hide Current Form
-					frame.setVisible(false);
+					//frame.setVisible(false);
 					
 					setID(id_textField);
 					setName(fnamelname_textField);
 					setAddress(addr_textField);
 					setProvince(province_textField);
 					setSex(resultSex);
-					
+					setPosition1(position_comboBox_1);
 					
 					String AP_EDUCATION = edu_textField.getText();
-					
 					String AP_MAJ = major_textField.getText();
 					
 					
@@ -499,6 +499,9 @@ public class Frame1 extends JFrame {
 	
 			return null;
 		}
-	
-		
+	public class Frame2 extends JFrame{
+			Frame2 fr2 = new Frame2();
+			
+	}
 }
+

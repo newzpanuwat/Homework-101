@@ -7,11 +7,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
-public class secondBox extends Frame1 {
+public class secondBox extends JFrame {
 	
 	protected String ap_id;
 
 	JFrame frame;
+
+	private String AP_ID;
 	
 	public static JLabel lblresult_id;
 	
@@ -37,8 +39,6 @@ public class secondBox extends Frame1 {
 		initialize();
 		showData();
 		getID1(AP_ID);
-		
-		
 	}
 
 	/**
@@ -58,16 +58,13 @@ public class secondBox extends Frame1 {
 	
 	
 	
-	public void getID1(String ap_id){
+	public void getID1(String AP_ID){
 		this.ap_id = this.AP_ID;
-		JLabel lblresult_id = new JLabel(ap_id);
+		JLabel lblresult_id = new JLabel("Result here");
 		lblresult_id.setBounds(364, 124, 96, 16);
 		frame.getContentPane().add(lblresult_id);
 		
-	
 	}
-	
-	
 	
 	
 	public void showData(){
@@ -189,12 +186,6 @@ public class secondBox extends Frame1 {
 		frame.getContentPane().add(lblPosition_3);
 		
 		
-		
-		
 	}
 
-	private void getID(JTextField id_textField) {
-		// TODO Auto-generated method stub
-		
-	}
 }
