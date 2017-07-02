@@ -20,7 +20,7 @@ public class MenuForm extends JFrame {
 	btnPOS_Qual,btnAP_POS,
 	btnClose;
 	
-	MenuForm(){
+	public MenuForm(){
 		Container c = this.getContentPane(); // Create container for components
 		c.setLayout(new GridLayout(9,1)); // Set GridLayout 3 rows, 1 column
 		JLabel lbl = new JLabel("ระบบจัดการฐานข้อมูลพื่นฐาน",SwingConstants.CENTER); // Show text label and add second parameters to set label to CENTER

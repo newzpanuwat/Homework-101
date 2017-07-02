@@ -2,6 +2,8 @@ package Employment;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,7 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class MainMenu extends JFrame{
+import FormDatabase.MenuForm;
+
+public class MainMenu extends JFrame implements ActionListener{
 	
 	
 	// Create variables instead 4 buttons following by ASC
@@ -34,10 +38,18 @@ public class MainMenu extends JFrame{
 		//FlowLayout() -->
 		//Create Button
 		
+		
 		btnApp = new JButton("แบบฟอร์มใบสมัครพนักงาน");
+		
+		
 		btnDb = new JButton("ระบบจัดการข้อมูลพื้นฐาน");
+		btnDb.addActionListener(this);
+		
 		btnRpt = new JButton("ระบบรายงาน");
+		
+		
 		btnExit = new JButton("ออกจากโปรแกรม");
+		btnExit.addActionListener(this);
 		
 		// Button to Panel
 		
@@ -52,15 +64,28 @@ public class MainMenu extends JFrame{
 		
 	 }
 	 
-	 
+	 public void actionPerformed(ActionEvent e){
+		 // Check who clicked
+		 // getSource => ดูว่า ใครถูก คลิ๊ก
+		 
+		 if(e.getSource() == btnDb){
+			 MenuForm menu = new MenuForm();
+				menu.setTitle("ระบบจัดการฐานข้อมูลพื้นฐาน"); // title bar display section
+				menu.setSize(700,1200); // set size of Main menu frame
+				menu.setLocationRelativeTo(null); // Set frame align center
+				menu.setVisible(true); // Display data to screen monitor
+		 }else if(e.getSource() == btnExit){
+			 System.exit(0);
+		 }
+	 }
 	
 	public static void main(String[] args) {
-		MainMenu main = new MainMenu();
-		main.setTitle("โปรแกรมการจัดการธุรกิจ(กรณีศึกษา:ธุรกิจจัดหางาน"); // title bar display section
-		main.setSize(800,500); // set size of Main menu frame
-		main.setDefaultCloseOperation(EXIT_ON_CLOSE); // Close this background process application when you exit the program
-		main.setLocationRelativeTo(null); // Set frame align center
-		main.setVisible(true); // Display data to screen monitor
+			MainMenu main = new MainMenu();
+			main.setTitle("โปรแกรมการจัดการธุรกิจ(กรณีศึกษา:ธุรกิจจัดหางาน"); // title bar display section
+			main.setSize(800,500); // set size of Main menu frame
+			main.setDefaultCloseOperation(EXIT_ON_CLOSE); // Close this background process application when you exit the program
+			main.setLocationRelativeTo(null); // Set frame align center
+			main.setVisible(true); // Display data to screen monitor
 	}
 
 }
