@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,12 +16,19 @@ import FormDatabase.MenuForm;
 
 public class MainMenu extends JFrame implements ActionListener{
 	
-	
 	// Create variables instead 4 buttons following by ASC
 	JButton btnApp,btnDb,btnRpt,btnExit;
 	
 	//default constructor
 	 MainMenu(){
+		 
+		Connection conn = MyConnect.getConnection();
+		if(conn != null){
+			System.out.println("Connect OK!...");
+		}else{
+			System.out.println("Connection Failed!!!...");
+		}
+		 
 		Container c = this.getContentPane(); // Create container for components
 		c.setLayout(new GridLayout(3,1)); // Set GridLayout 3 rows, 1 column
 		JLabel lbl = new JLabel("∫√‘…—∑ STOU-TEC ®”°—¥",SwingConstants.CENTER); // Show text label and add second parameters to set label to CENTER
