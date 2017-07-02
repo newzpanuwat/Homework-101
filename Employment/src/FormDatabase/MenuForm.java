@@ -74,7 +74,7 @@ public class MenuForm extends JFrame {
 	public static void main(String[] args){
 		MenuForm menu = new MenuForm();
 		menu.setTitle("ระบบจัดการฐานข้อมูลพื้นฐาน"); // title bar display section
-		menu.setSize(700,1200); // set size of Main menu frame
+		menu.setSize(800,500); // set size of Main menu frame
 		menu.setDefaultCloseOperation(EXIT_ON_CLOSE); // Close this background process application when you exit the program
 		menu.setLocationRelativeTo(null); // Set frame align center
 		menu.setVisible(true); // Display data to screen monitor

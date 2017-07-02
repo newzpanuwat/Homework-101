@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -15,11 +16,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+
 
 import Employment.MainMenu;
 import Employment.MyConnect;
@@ -212,6 +216,33 @@ public class FormCompany extends JFrame {
 				
 				
 				
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void Insert(){
+		try{
+			String sql = "INSERT INTO COMPANY" 
+					+" (COMP_ID,COMP_NAME,COMP_ADDR,COMP_CHW,COMP_PERSON)"
+					+" VALUES (?,?,?,?,?)";
+			
+			PreparedStatement pre = conn.prepareStatement(sql);
+			pre.setString(1,txt_compID.getText().trim());
+			pre.setString(2,txt_compName.getText().trim());
+			pre.setString(3,txt_compAddr.getText().trim());
+			pre.setString(4,txt_compCHW.getText().trim());
+			pre.setString(5,txt_compPerson.getText().trim());
+			
+			
+			if(pre.executeUpdate() != -1){
+				JOptionPane.showMessageDialog(this,
+						"บันทึกรายการแล้ว",
+						"ผลบันทึกรายการ",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+			
+			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
