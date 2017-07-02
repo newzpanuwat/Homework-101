@@ -1,0 +1,204 @@
+CREATE TABLE applicant
+	(AP_ID		Char(4)		NOT  NULL	PRIMARY KEY,
+	AP_NAME	Char(20)	NOT  NULL,
+	AP_ADDR	Char(8)		NOT  NULL,	
+	AP_CHW	Char(10)	NOT  NULL,
+	AP_SEX		Char(1)		NOT  NULL,
+	AP_ED		Char(7)		NOT  NULL,
+	AP_MAJ	Char(25)	NOT  NULL) ;
+
+CREATE TABLE qualification
+	(QUAL_CODE	Char(10)	NOT  NULL	PRIMARY KEY,
+	QUAL_DESC	Char(30)	NOT  NULL) ;
+
+CREATE TABLE company
+	(COMP_ID	Char(4)		NOT  NULL	PRIMARY KEY,
+	COMP_NAME	Char(15)	NOT  NULL,
+	COMP_ADDR	Char(15)	NOT  NULL,
+	COMP_CHW	Char(10)	NOT  NULL,
+	COMP_PERSON	Char(10)	NOT  NULL) ;
+
+CREATE TABLE position
+	(POS_ID 	Char(4)		NOT  NULL	PRIMARY KEY,
+	POS_NAME	Char(25)	NOT  NULL,
+	POS_PERIOD	Char(2)		NOT  NULL,
+	POS_SALARY	Int		NOT  NULL,
+	POS_NUMBER	Int		NOT  NULL,
+	COMP_ID	Char(4)		NOT  NULL 	REFERENCES  company (COMP_ID))  ;
+
+CREATE TABLE ap_qual
+	(AP_ID		Char(4)		NOT  NULL 	REFERENCES   applicant (AP_ID),
+	QUAL_CODE	Char(10)	NOT  NULL 	REFERENCES   qualification (QUAL_CODE),
+	PRIMARY KEY	(AP_ID, QUAL_CODE)  );
+
+CREATE TABLE ap_pos
+	(AP_ID		Char(4)		NOT  NULL 	REFERENCES  applicant (AP_ID),
+	POS_ID		Char(4)		NOT  NULL 	REFERENCES  position (POS_ID),
+	APPLY_DATE	Datetime	NOT  NULL,
+	PRIMARY KEY	(AP_ID, POS_ID)  ) ;
+
+CREATE TABLE pos_qual
+	(POS_ID	Char(4)		NOT  NULL	REFERENCES position (POS_ID),
+	QUAL_CODE	Char(10)		NOT  NULL	REFERENCES qualification (QUAL_CODE),
+	PRIMARY KEY	(POS_ID, QUAL_CODE)  ) ;
+
+INSERT INTO applicant
+	VALUES ('AP01', 'Amarin Sukjai', '1/10', 'Nontaburi', 'M', 'B.S', 'Computer Science') ;
+INSERT INTO applicant
+	VALUES ('AP02', 'Chaiyong Sabuyjai', '33/20', 'Ayudtaya', 'M', 'B.A.', 'Computer Business');
+INSERT INTO applicant 
+	VALUES ('AP03', 'Danai Rakjai', '9/330', 'Nontaburi', 'M', 'B.S.', 'Information Technology');
+INSERT INTO applicant
+	VALUES ('AP04', 'Ekawit Jaipensuk', '85/40', 'Bangkok', 'M', 'M.S.', 'Computer Science');
+INSERT INTO applicant
+	VALUES ('AP05', 'Jaroen Jaidee', '64/50', 'Patumtani', 'M', 'M.A.', 'MIS');
+INSERT INTO applicant
+	VALUES ('AP06', 'Malee Meesuk', '74/2', 'Bangkok', 'F', 'B.A.',  'English');
+INSERT INTO applicant
+	VALUES ('AP07', 'Napa Noiyai', '32/14',  'Chonburi', 'F', 'B.S.', 'Computer Engineer');
+INSERT INTO applicant
+	VALUES ('AP08', 'Valerie Vijarn', '8/60',  'Rayong', 'F', 'M.S.','Telecommunication');
+INSERT INTO applicant
+	VALUES ('AP09', 'Vanesa Vasana', '909/1', 'Chiengmai', 'F', 'M.S.', 'Networking');
+INSERT INTO applicant
+	VALUES ('AP10', 'Wilai Wongdee', '101/1', 'Krabi', 'F', 'M.B.A.', 'Business Administration');
+
+INSERT INTO qualification
+	VALUES ('ASP', 'WEB_ASP');
+INSERT INTO qualification
+	VALUES ('C++', 'C++ Programming');
+INSERT INTO qualification
+	VALUES ('DB2', 'Database Administrator,DB2');
+INSERT INTO qualification
+	VALUES ('DBA_OR', 'Database Administrator, ORACLE');
+INSERT INTO qualification
+	VALUES ('GRP_DS', 'Graphic Design');
+INSERT INTO qualification
+	VALUES ('JAVA', 'JAVA Programming');
+INSERT INTO qualification
+	VALUES ('MGT', 'Management');
+INSERT INTO qualification
+	VALUES ('NW_CIS', 'Network, CISCO') ;
+INSERT INTO qualification
+	VALUES ('NW_NOV', 'Network, Novell');
+INSERT INTO qualification
+	VALUES ('PHP', 'WEB_PHP');
+INSERT INTO qualification
+	VALUES ('SA', 'System Analysis');
+INSERT INTO qualification
+	VALUES ('SD', 'System Design');
+INSERT INTO qualification
+	VALUES ('SE_45', 'Secretarial work, 45 words/min');
+INSERT INTO qualification
+	VALUES ('SE_60', 'Secretarial work, 60 words/min');
+INSERT INTO qualification
+	VALUES ('VB', 'Visual Basic');
+
+
+INSERT INTO Company
+  	VALUES ('CM01','IBM','10/2 Bangrak','Bangkok','John');
+INSERT INTO Company 
+  	VALUES ('CM02','S/W House','22/44 Bangkae','Bangkok','Jim');
+INSERT INTO Company
+  	VALUES ('CM03','Imagin','4/300 Kungsri','Patumtani','Linda');
+INSERT INTO Company
+  	VALUES ('CM04','Egghead','99/8 Pakkred','Nontaburi','Karol');
+INSERT INTO Company
+  	VALUES ('CM05','MWEB','5/44 Meanburi','Bangkok','Helen');
+INSERT INTO Company
+  	VALUES ('CM06','INET','6/220 Meung','Chiengmai','Evens');
+INSERT INTO Company
+  	VALUES ('CM07','KSC','7/30 Hadyai','Songkla','Sharon');
+INSERT INTO Company
+  	VALUES ('CM08','BetaSoft','4/680 Main','Puket','Dan');
+INSERT INTO Company
+  	VALUES ('CM09','Edutain','933 Meung','Udontani','Agnes');
+INSERT INTO Company
+  	VALUES ('CM10','Compex','19/9 Pattaya','Chonburi','Tom');
+INSERT INTO position
+  VALUES ('PS01','Technical Programmer','2',20000,4,'CM01');
+INSERT INTO position
+  VALUES ('PS02','WEB Developer','3',10000,5,'CM02');
+INSERT INTO position
+  VALUES ('PS03','General Manager','1',20000,8,'CM03');
+INSERT INTO position
+  VALUES ('PS04','ICT Specialist','1',30000,10,'CM04');
+INSERT INTO position
+  VALUES ('PS05','E-Business Analyst','1',40000,6,'CM05');
+INSERT INTO position
+  VALUES ('PS06','ICT Documentor','1',10000,3,'CM06');
+INSERT INTO position
+  VALUES ('PS07','Database Administrator','1',20000,4,'CM07');
+INSERT INTO position
+  VALUES ('PS08','PC Administrator','1',10000,5,'CM08');
+INSERT INTO position
+  VALUES ('PS09','Network Specialist','2',30000,3,'CM09');
+INSERT INTO position
+  VALUES ('PS10','ICT Manager','1',50000,3,'CM10');
+INSERT INTO ap_qual	VALUES ('AP01', 'VB');
+INSERT INTO ap_qual	VALUES ('AP01', 'C++');
+INSERT INTO ap_qual	VALUES ('AP01', 'JAVA');
+INSERT INTO ap_qual	VALUES ('AP01', 'PHP');
+INSERT INTO ap_qual	VALUES ('AP02', 'ASP');
+INSERT INTO ap_qual	VALUES ('AP02', 'PHP');
+INSERT INTO ap_qual	VALUES ('AP02', 'GRP_DS');
+INSERT INTO ap_qual	VALUES ('AP03', 'MGT');
+INSERT INTO ap_qual	VALUES ('AP03', 'SE_45');
+INSERT INTO ap_qual	VALUES ('AP04', 'VB');
+INSERT INTO ap_qual	VALUES ('AP04', 'C++');
+INSERT INTO ap_qual	VALUES ('AP04', 'SA');
+INSERT INTO ap_qual	VALUES ('AP04', 'JAVA');
+INSERT INTO ap_qual	VALUES ('AP05', 'MGT');
+INSERT INTO ap_qual	VALUES ('AP05', 'ASP');
+INSERT INTO ap_qual	VALUES ('AP05', 'SD');
+INSERT INTO ap_qual	VALUES ('AP05', 'PHP');
+INSERT INTO ap_qual	VALUES ('AP06', 'SE_60');
+INSERT INTO ap_qual	VALUES ('AP07', 'DB2');
+INSERT INTO ap_qual	VALUES ('AP08', 'NW_NOV');
+INSERT INTO ap_qual	VALUES ('AP08', 'MGT');
+INSERT INTO ap_qual	VALUES ('AP08', 'NW_CIS');
+INSERT INTO ap_qual	VALUES ('AP09', 'NW_CIS');
+INSERT INTO ap_qual	VALUES ('AP09', 'NW_NOV');
+INSERT INTO ap_qual	VALUES ('AP09', 'JAVA');
+INSERT INTO ap_qual	VALUES ('AP09', 'MGT');
+INSERT INTO ap_qual	VALUES ('AP10', 'SD');
+
+INSERT INTO ap_pos	VALUES ('AP01', 'PS01', '2003/01/20');
+INSERT INTO ap_pos	VALUES ('AP02', 'PS01', '2003/01/20');
+INSERT INTO ap_pos	VALUES ('AP03', 'PS01', '2003/01/20');
+INSERT INTO ap_pos	VALUES ('AP02', 'PS02', '2003/01/20');
+INSERT INTO ap_pos	VALUES ('AP04', 'PS02', '2003/01/20');
+INSERT INTO ap_pos	VALUES ('AP06', 'PS02', '2003/01/20');
+INSERT INTO ap_pos	VALUES ('AP04', 'PS04', '2003/02/20');
+INSERT INTO ap_pos	VALUES ('AP05', 'PS05', '2003/02/20');
+INSERT INTO ap_pos	VALUES ('AP06', 'PS06', '2003/03/20');
+INSERT INTO ap_pos	VALUES ('AP07', 'PS07', '2003/03/20');
+INSERT INTO ap_pos	VALUES ('AP08', 'PS08', '2003/03/20');
+INSERT INTO ap_pos	VALUES ('AP09', 'PS09', '2003/05/20');
+INSERT INTO ap_pos	VALUES ('AP08', 'PS10', '2003/05/20');
+INSERT INTO ap_pos	VALUES ('AP09', 'PS10', '2003/05/20');
+INSERT INTO ap_pos	VALUES ('AP10', 'PS10', '2003/05/20');
+INSERT INTO ap_pos	VALUES ('AP03', 'PS03', '2003/05/20');
+
+INSERT INTO pos_qual	VALUES ('PS01', 'VB');
+INSERT INTO pos_qual	VALUES ('PS01', 'C++');
+INSERT INTO pos_qual	VALUES ('PS02', 'ASP');
+INSERT INTO pos_qual	VALUES ('PS02', 'PHP');
+INSERT INTO pos_qual	VALUES ('PS02', 'GRP_DS');
+INSERT INTO pos_qual	VALUES ('PS03', 'MGT');
+INSERT INTO pos_qual	VALUES ('PS04', 'VB');
+INSERT INTO pos_qual	VALUES ('PS04', 'C++');
+INSERT INTO pos_qual	VALUES ('PS04', 'SA');
+INSERT INTO pos_qual	VALUES ('PS05', 'MGT');
+INSERT INTO pos_qual	VALUES ('PS05', 'ASP');
+INSERT INTO pos_qual	VALUES ('PS05', 'SD');
+INSERT INTO pos_qual	VALUES ('PS06', 'SE_60');
+INSERT INTO pos_qual	VALUES ('PS08', 'NW_NOV');
+INSERT INTO pos_qual	VALUES ('PS08', 'MGT');
+INSERT INTO pos_qual	VALUES ('PS09', 'NW_CIS');
+INSERT INTO pos_qual	VALUES ('PS09', 'NW_NOV');
+INSERT INTO pos_qual	VALUES ('PS09', 'MGT');
+INSERT INTO pos_qual	VALUES ('PS09', 'JAVA'); 
+INSERT INTO pos_qual	VALUES ('PS10', 'MGT');
+INSERT INTO pos_qual	VALUES ('PS10', 'SD');
+
