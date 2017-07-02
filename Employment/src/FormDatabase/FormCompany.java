@@ -5,8 +5,12 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
 import Employment.MainMenu;
 import Employment.MyConnect;
 
-public class FormCompany extends JFrame {
+public class FormCompany extends JFrame implements ActionListener{
 	
 	JTextField txt_compID,txt_compName,txt_compAddr,
 				txt_compCHW,txt_compPerson,txt_Search;
@@ -121,10 +125,16 @@ public class FormCompany extends JFrame {
 		//Center
 		JPanel panelCenter = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		btnAdd = new JButton("บันทึก");
+		btnAdd.addActionListener(this);
+		
 		btnEdit = new JButton("แก้ไข");
+		btnEdit.addActionListener(this);
+		
 		btnDel = new JButton("ลบข้อมูล");
+		btnDel.addActionListener(this);
 		
 		panelCenter.add(btnAdd);
+		
 		panelCenter.add(btnEdit);
 		panelCenter.add(btnDel);
 		
@@ -160,6 +170,19 @@ public class FormCompany extends JFrame {
 		
 		
 		tableComp = new JTable();//Create new table
+		tableComp.addMouseListener(new MouseAdapter(){
+			
+			public void mouseClicked(MouseEvent event){
+				int index = tableComp.getSelectedRow();
+				txt_compID.setEditable(false);
+				
+				txt_compID.setText(tableComp.getValueAt(index, 0).toString());
+				txt_compName.setText(tableComp.getValueAt(index, 1).toString());
+				txt_compAddr.setText(tableComp.getValueAt(index, 2).toString());
+				txt_compCHW.setText(tableComp.getValueAt(index, 3).toString());
+				txt_compPerson.setText(tableComp.getValueAt(index, 4).toString());
+			}
+		});
 		tableComp.setModel(initModel);	//Initial model
 		modelComp = (DefaultTableModel)tableComp.getModel(); //Make model to be Initial model for using to the another function
 		
@@ -222,6 +245,15 @@ public class FormCompany extends JFrame {
 	}
 	
 	public void Insert(){
+		if(txt_compID.getText().trim().length() < 1 || txt_compID.getText().trim().length() > 4){
+			JOptionPane.showMessageDialog(this,
+					"กรุณากรอกข้อมูลให้ถูกต้อง(1-4 ตัวอักษร)",
+					"ผลบันทึกรายการ",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		
 		try{
 			String sql = "INSERT INTO COMPANY" 
 					+" (COMP_ID,COMP_NAME,COMP_ADDR,COMP_CHW,COMP_PERSON)"
@@ -240,13 +272,123 @@ public class FormCompany extends JFrame {
 						"บันทึกรายการแล้ว",
 						"ผลบันทึกรายการ",
 						JOptionPane.INFORMATION_MESSAGE);
+						showData();
+						clearData();
+						txt_compID.setEditable(true);
+			}else{
+				JOptionPane.showMessageDialog(this,
+						"บันทึกรายการไม่สำเร็จ",
+						"ผลบันทึกรายการ",
+						JOptionPane.ERROR_MESSAGE);
 			}
-			
 			
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}
 	}
+	
+	public void actionPerformed(ActionEvent e){
+		if(e.getSource() == btnAdd){
+			Insert();
+		}else if(e.getSource() == btnEdit){
+			Update();
+		}else if(e.getSource() == btnDel){
+			Delete();
+		}
+	}
+	
+	public void clearData(){
+		txt_compID.setText("");
+		txt_compName.setText("");
+		txt_compAddr.setText("");
+		txt_compCHW.setText("");
+		txt_compPerson.setText("");
+	}
+	
+	public void Update(){
+		if(txt_compID.getText().trim().length() < 1 || txt_compID.getText().trim().length() > 4){
+			JOptionPane.showMessageDialog(this,
+					"กรุณากรอกข้อมูลให้ถูกต้อง(1-4 ตัวอักษร)",
+					"ผลบันทึกรายการ",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		
+		try{
+			String sql = "UPDATE COMPANY SET " 
+					+"COMP_NAME=?,"
+					+"COMP_ADDR=?," 
+					+"COMP_CHW=?,"
+					+"COMP_PERSON,"
+					+"WHERE COMP_ID=?";
+			
+			PreparedStatement pre = conn.prepareStatement(sql);
+			pre.setString(1,txt_compName.getText().trim());
+			pre.setString(2,txt_compAddr.getText().trim());
+			pre.setString(3,txt_compCHW.getText().trim());
+			pre.setString(4,txt_compPerson.getText().trim());
+			pre.setString(5,txt_compID.getText().trim());
+			
+			
+			if(pre.executeUpdate() != -1){
+				JOptionPane.showMessageDialog(this,
+						"บันทึกรายการแล้ว",
+						"ผลบันทึกรายการ",
+						JOptionPane.INFORMATION_MESSAGE);
+						showData();
+						clearData();
+			}else{
+				JOptionPane.showMessageDialog(this,
+						"บันทึกรายการไม่สำเร็จ",
+						"ผลบันทึกรายการ",
+						JOptionPane.ERROR_MESSAGE);
+			}
+			
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+	}
+	public void Delete(){
+		if(txt_compID.getText().trim().length() < 1 || txt_compID.getText().trim().length() > 4){
+			JOptionPane.showMessageDialog(this,
+					"กรุณากรอกข้อมูลให้ถูกต้อง(1-4 ตัวอักษร)",
+					"ผลบันทึกรายการ",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		
+		try{
+			int index = tableComp.getSelectedRow();
+			String comp_ID = tableComp.getValueAt(index, 0).toString();
+			String sql = "DELETE FROM COMPANY WHERE COMP_ID=? ";
+			
+			PreparedStatement pre = conn.prepareStatement(sql);
+			pre.setString(1,txt_compID.getText().trim());
+			
+			
+			if(pre.executeUpdate() != -1){
+				JOptionPane.showMessageDialog(this,
+						"ลบรายการแล้ว",
+						"ผลบันทึกรายการ",
+						JOptionPane.INFORMATION_MESSAGE);
+						showData();
+						clearData();
+			}else{
+				JOptionPane.showMessageDialog(this,
+						"บันทึกรายการไม่สำเร็จ",
+						"ผลบันทึกรายการ",
+						JOptionPane.ERROR_MESSAGE);
+			}
+			
+		}catch(SQLException ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	
+	
 	
 	public static void main(String[] args){
 		FormCompany fCompany = new FormCompany();

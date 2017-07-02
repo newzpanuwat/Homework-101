@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import FormDatabase.FormCompany;
 import FormDatabase.MenuForm;
 
 public class MainMenu extends JFrame implements ActionListener{
@@ -48,7 +49,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		
 		
 		btnApp = new JButton("แบบฟอร์มใบสมัครพนักงาน");
-		
+		btnApp.addActionListener(this);
 		
 		btnDb = new JButton("ระบบจัดการข้อมูลพื้นฐาน");
 		btnDb.addActionListener(this);
@@ -84,6 +85,13 @@ public class MainMenu extends JFrame implements ActionListener{
 				menu.setVisible(true); // Display data to screen monitor
 		 }else if(e.getSource() == btnExit){
 			 System.exit(0);
+		 }else if(e.getSource() == btnApp){
+			 FormCompany fCompany = new FormCompany();
+				fCompany.setTitle("ข้อมูลบริษัที่มีตำแหน่งว่าง(COMPANY)"); // title bar display section
+				fCompany.setSize(900,700); // set size of Main menu frame
+				fCompany.setDefaultCloseOperation(EXIT_ON_CLOSE); // Close this background process application when you exit the program
+				fCompany.setLocationRelativeTo(null); // Set frame align center
+				fCompany.setVisible(true); // Display data to screen monitor
 		 }
 	 }
 	
