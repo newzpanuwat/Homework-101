@@ -175,6 +175,7 @@ public class FormCompany extends JFrame implements ActionListener{
 			public void mouseClicked(MouseEvent event){
 				int index = tableComp.getSelectedRow();
 				txt_compID.setEditable(false);
+				btnAdd.setEnabled(false);
 				
 				txt_compID.setText(tableComp.getValueAt(index, 0).toString());
 				txt_compName.setText(tableComp.getValueAt(index, 1).toString());
@@ -320,7 +321,7 @@ public class FormCompany extends JFrame implements ActionListener{
 					+"COMP_NAME=?,"
 					+"COMP_ADDR=?," 
 					+"COMP_CHW=?,"
-					+"COMP_PERSON,"
+					+"COMP_PERSON=? "
 					+"WHERE COMP_ID=?";
 			
 			PreparedStatement pre = conn.prepareStatement(sql);
@@ -338,6 +339,7 @@ public class FormCompany extends JFrame implements ActionListener{
 						JOptionPane.INFORMATION_MESSAGE);
 						showData();
 						clearData();
+						txt_compID.setEditable(true);
 			}else{
 				JOptionPane.showMessageDialog(this,
 						"บันทึกรายการไม่สำเร็จ",
@@ -375,6 +377,7 @@ public class FormCompany extends JFrame implements ActionListener{
 						JOptionPane.INFORMATION_MESSAGE);
 						showData();
 						clearData();
+						txt_compID.setEditable(true);
 			}else{
 				JOptionPane.showMessageDialog(this,
 						"บันทึกรายการไม่สำเร็จ",

@@ -4,6 +4,8 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 
-public class MenuForm extends JFrame {
+public class MenuForm extends JFrame implements ActionListener {
 	
 	JButton btnApplicant,
 	btnComp,btnPos,
@@ -38,7 +40,10 @@ public class MenuForm extends JFrame {
 		JPanel buttonPanel8 = new JPanel();
 		
 		btnApplicant = new JButton("ข้อมูลผู้สมัคร(APPLICANT)");
+		
 		btnComp = new JButton("ข้อมูลบริษัทที่มีตำแหน่งว่าง(Company)");
+		btnComp.addActionListener(this);
+		
 		btnPos = new JButton("ข้อมูลตำแหน่งที่เปิดรับ(POSITION)");
 		btnQual = new JButton("ข้อมูลคุณสมบัติเฉพาะตำแหน่ง(QUALIFICATION)");
 		btnAP_Qual = new JButton("ข้อมูลผู้สมัคร คุณสมบัติเฉพาะตำแหน่ง(AP_QUAL)");
@@ -68,6 +73,17 @@ public class MenuForm extends JFrame {
 				c.add(buttonPanel7);
 				c.add(buttonPanel8);
 				
+	}
+	
+	public void actionPerformed(ActionEvent e){
+		if(e.getSource() == btnComp){
+			 FormCompany fCompany = new FormCompany();
+				fCompany.setTitle("ข้อมูลบริษัที่มีตำแหน่งว่าง(COMPANY)"); // title bar display section
+				fCompany.setSize(900,700); // set size of Main menu frame
+				fCompany.setDefaultCloseOperation(EXIT_ON_CLOSE); // Close this background process application when you exit the program
+				fCompany.setLocationRelativeTo(null); // Set frame align center
+				fCompany.setVisible(true); // Display data to screen monitor
+		}
 	}
 	
 	
